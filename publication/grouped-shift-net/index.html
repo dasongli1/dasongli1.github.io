@@ -115,7 +115,7 @@
              <p class="text-justify">
               In this study, we propose a simple, fast, and effective spatial-temporal shift module to implicitly model temporal correspondences across time. We introduce Group Shift-Net, which is equipped with the proposed spatial-temporal shift module for alignment and basic 2D U-Nets as the frame-wise encoder and decoder. Such a simple yet effective framework is able to model long-term dependency without utilizing resource-demanding optical flow estimation, deformable convolution, recurrent methods, or temporal transformers. Our Group Shift-Net adopts a three-stage design: 1) frame-wise pre-restoration, 2) multi-frame fusion with grouped spatial-temporal shift, and 3) frame-wise restoration.
           </p>
-          <img class="img-fluid" src="images/featured.png" alt="architecture" width="60%">
+          <img class="img-fluid" src="images/network.png" alt="architecture" width="60%">
           <p class="text-justify" style="font-family: Lato; font-size: x-large; font-weight: 500;">Network Architecture</p>
              <p class="text-justify">
               For the network of frame-wise pre-restoration of stage 1 and final restoration of stage 3, it is observed that a single U-Net-like structure cannot restore the frames well. Instead, we propose to stack N 2D slim U-Nets consecutively to conduct frame-wise restoration effectively. 
@@ -141,7 +141,7 @@
                 <img class="img-fluid" src="images/comparison0.png" alt="comparison" width="70%">
           <p>PSNR-Params-FLOPS comparisons with other state-of-the-art methods on video deblurring
 (Left) and video denoising (Right). Our tiny (-T), small (-S) and base models occupy top-left corners, indicating superior
-performance with higher efficiency </p>
+performance with higher efficiency. </p>
                 <img class="img-fluid" src="images/comparison1.png" alt="comparison" width="70%">
           <p>Quantitative comparison with state-of-the-art video deblurring methods on GoPro. </p>
                 <img class="img-fluid" src="images/comparison2.png" alt="comparison" width="70%">
