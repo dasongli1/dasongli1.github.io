@@ -1,182 +1,351 @@
+
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-180733097-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-180733097-1');
-</script>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>No Attention is Needed: Grouped Spatial-temporal Shift for Simple and Efficient Video Restorer</title>
-    <!-- Bootstrap -->
-    <link href="css/bootstrap-4.4.1.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
-  <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+<html>
+  <head><link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
   </head>
+<title>Dasong Li</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <style>
-  .section-title {
-    font-family: "Lato"
+<!-- For arrangement -->
+<link rel="stylesheet" href="styles/w3.css">
+<!-- For icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
+
+<!-- For utilities -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<!-- <link rel="stylesheet" href="styles/css/bootstrap.min.css"> -->
+
+<style>
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "serif";
+    font-weight: 400;
+    color:#000000;
   }
-  .authors {
-    font-family: "Lato";
+
+  li, p {
+    font-family: serif;
+    color:#000000;
   }
-  h1, h2, h3, h4, h5, h6, p {
-    font-family: "Lato";
+
+  body,
+  html {
+    height: 100%;
+    color: #777;
+    font-size: 16px;
+    line-height: 1.8;
   }
-  </style>
 
-  <!-- cover -->
-  <section>
-    <div class="jumbotron text-center mt-4">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <h2 style="font-family: Lato;">No Attention is Needed: Grouped Spatial-temporal Shift for Simple and Efficient Video Restorer </h2->
-            <h4 style="color:#5a6268;">arXiv 2022</h4>
-            <hr>
-            <h6> <a href="https://dasongli1.github.io/" target="_blank">Dasong Li</a><sup>1</sup>, 
-                Xiaoyu Shi<sup>1</sup>, Yi Zhang<sup>1</sup>, Xiaogang Wang<sup>1, 3</sup>, Hongwei Qin<sup>2</sup>,
-                <a href="https://www.ee.cuhk.edu.hk/~hsli/" target="_blank">Hongsheng Li</a><sup>1, 3</sup></h6>
-            <p>
-                <sup>1</sup>The Chinese University of Hong Kong &nbsp;&nbsp;
-                <sup>2</sup>SenseTime Research &nbsp;&nbsp;  <br>
-                <sup>3</sup>Centre for Perceptual and Interactive Intelligence Limited &nbsp;&nbsp; 
-                </p>
-            <div class="row justify-content-center">
-              <div class="column">
-                  <p class="mb-5"><a class="btn btn-large btn-light" href="https://arxiv.org/abs/2203.16194" role="button"  target="_blank">
-                    <i class="fa fa-file"></i> Paper</a> </p>
-              </div>
-              <div class="column">
-                  <p class="mb-5"><a class="btn btn-large btn-light" href="https://github.com/drinkingcoder/FlowFormer-Official" role="button"  target="_blank">
-                    <i class="fa fa-github-alt"></i> Code (coming soon)</a> </p>
-              </div>
-              <!-- <div class="column">
-                  <p class="mb-5"><a class="btn btn-large btn-light" href="https://zjueducn-my.sharepoint.com/:f:/g/personal/pengsida_zju_edu_cn/Eo9zn4x_xcZKmYHZNjzel7gBdWf_d4m-pISHhPWB-GZBYw?e=Hf4mz7" role="button">
-                    <i class="fa fa-database"></i> Data</a> </p>
-              </div> -->
-            </div>
-            
-          </div>
+  .pub-title {
+    font-family: serif;
+    font-weight: bold;
+    color: #000000;
+  }
+  .pub-conference {
+    font-family: serif;
+  }
+  .pub-authors {
+    font-family: serif;
+    font-style: italic;
+  }
+  .pub-highlight {
+    color: #e83015;
+    font-family: serif;
+  }
+
+  .w3-wide {
+    letter-spacing: 12px;
+    margin-right: -12px;
+  }
+
+  .w3-hover-opacity {
+    cursor: pointer;
+  }
+
+  .pub{
+    font-style: serif;
+  }
+
+  /* Turn off parallax scrolling for tablets and phones */
+  @media only screen and (max-device-width: 1600px) {
+
+    .bgimg-1 {
+      background-attachment: scroll;
+      min-height: 400px;
+    }
+  }
+
+  .hero-overlay .btn {
+    color: #fff;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .btn-primary {
+    border-color: #0095eb !important;
+    background: #0095eb !important;
+  }
+
+  .btn-primary:hover,
+  .btn-primary:active,
+  .btn-primary.active,
+  .btn-primary:visited,
+  .open>.dropdown-toggle.btn-primary {
+    background: #0095eb !important;
+  }
+
+  .btn-light {
+    border-color: #fff !important;
+    background: #fff !important;
+  }
+
+  .btn-light:hover,
+  .btn-light:active,
+  .btn-light.active {
+    background: rgba(0, 0, 0, 0.4) !important;
+  }
+
+  .btn-outline {
+    background-color: transparent !important;
+    color: inherit;
+    transition: all .5s;
+  }
+
+  .btn-primary.btn-outline {
+    color: #0095eb !important;
+    border-color: #0095eb !important;
+  }
+
+  .btn-primary.btn-outline:focus {
+    color: #0095eb !important;
+  }
+
+  .btn-primary.btn-outline:active {
+    color: #fff !important;
+  }
+
+  .btn-light.btn-outline {
+    color: #fff !important;
+    border-color: #fff !important;
+  }
+
+  .btn-light.btn-outline:focus {
+    color: #fff !important;
+  }
+
+  .btn-light.btn-outline:active {
+    color: transparent !important;
+  }
+
+  .btn-success.btn-outline {
+    color: #5cb85c;
+  }
+
+  .btn-info.btn-outline {
+    color: #5bc0de;
+  }
+
+  .btn-warning.btn-outline {
+    color: #f0ad4e;
+  }
+
+  .btn-danger.btn-outline {
+    color: #d9534f;
+  }
+
+  .btn-primary.btn-outline:hover,
+  .btn-light.btn-outline:hover,
+  .btn-success.btn-outline:hover,
+  .btn-info.btn-outline:hover,
+  .btn-warning.btn-outline:hover,
+  .btn-danger.btn-outline:hover {
+    color: #fff !important;
+  }
+
+  video {
+    width: 100%;
+    height: auto;
+    /* max-height: 400px; */
+  }
+
+</style>
+
+<body>
+
+  <!-- 关于部分 -->
+  <div class="w3-content w3-container w3-padding-16" id="about">
+    <div class="w3-row">
+      <div class="w3-col m3 w3-center w3-padding-large">
+        <img src="materials/avatar.jpg" class="w3-circle w3-image " alt="Photo of Me" width="190" height="190">
+        <div class="w3-xlarge w3-section">
+          <a href="dasongli@link.cuhk.edu.hk" target="_blank"><i
+              class="fa fa-envelope-square ai-1x w3-hover-opacity" style="color:#3498DB"></i></a>
+          <a href="https://github.com/dasongli1" target="_blank"><i class="fa fa-github w3-hover-opacity"
+              style="color:#3498DB"></i></a>
         </div>
       </div>
+
+      <div class="w3-col m9 w3-padding-large">
+        <h2 style="color:#000000;text-align: center">Dasong Li</h2>
+        <div style="text-align: center;font-weight: 600;">李大松</div>
+        <p>
+        I am a Ph.D. student at MMLab@CUHK, supervised by  <a href="https://www.ee.cuhk.edu.hk/~hsli/">Prof. Hongsheng Li 
+        </a>and <a href="https://www.ee.cuhk.edu.hk/~xgwang/">Prof. Xiaogang Wang</a>. My research is also advised by <a href="http://qinhongwei.com/academic/">Dr. Hongwei Qin</a> at Sensetime Research.
+        Before that, I got my bachelor degree at the IEEE Honor Class from Shanghai Jiao Tong University. My research interests include computational photography and image reconstruction. 
+      </p>
+      </div>
     </div>
-  </section>
+
+    <!-- <p> -->
+  <div class="w3-content w3-container w3-padding-12" id="portfolio">
+    <h3 class="w3-center" style="color: #000000;">Experience</h3>
+      <li>Ph.D in Electronic Engineering at MMLab of The Chinese University of Hong Kong, 2020~present.</li>
+      <li>Full-time researcher at Sensetime Research (ISP&Codec), 2019~2020.</li>
+      <li>B.Eng. in Computer Science (IEEE Honor Class) at Shanghai Jiao Tong University, 2015~2019.</li>
+    </div>
+    <!-- </p> -->
+
+    <!-- 标志 -->
+    <!-- <div class="w3-row-padding w3-center w3-hide-small">
+      <div class="w3-col m3 w3-center w3-padding-large">
+        <img src="images/logos/ZJU.png" style="width:26%" alt="Zhejiang University">
+      </div>
+      <div class="w3-col m3 w3-center w3-padding-large">
+        <img src="images/logos/cse_zju.png" style="width:36%" alt="Zhejiang University">
+      </div>
+
+      <div class="w3-col m3 w3-center w3-padding-large">
+        <img src="images/logos/ckc.png" style="width:96%" alt="CKC Honor College">
+      </div>
+
+      <div class="w3-col m3 w3-center w3-padding-large">
+        <img src="images/logos/penn.jpg" style="width:80%" alt="University of Pennsylvania">
+      </div>
+
+    </div> -->
+  </div>
 
 
-  <!-- abstract -->
-  <section>
-    <div class="container">
-      <div class="row">
-        <div class="col-12 text-center">
-          <h3>Abstract</h3>
-            <hr style="margin-top:0px">
-          <p class="text-justify">Video restoration, aiming at restoring clear frames from degraded videos, has been attracting increasing attention. Video restoration is required to establish the temporal correspondences from multiple misaligned frames. To achieve that end, existing deep methods generally adopt complicated network architectures, such as integrating optical flow, deformable convolution, cross-frame or cross-pixel self-attention layers, resulting in expensive computational cost. We argue that with proper design, temporal information utilization in video restoration can be much more efficient and effective. In this study, we propose a simple, fast yet effective framework for video restoration. The key of our framework is the grouped spatial-temporal shift, which is simple and lightweight, but can implicitly establish inter-frame correspondences and achieve multi-frame aggregation. Coupled with basic 2D U-Nets for frame-wise encoding and decoding, such an efficient spatial-temporal shift module can effectively tackle the challenges in video restoration. Extensive experiments show that our framework surpasses previous state-of-the-art method with <a style="color: #e83015;">43%</a> of its computational cost on both video deblurring and video denoising. 
+  <div class="w3-content w3-container w3-padding-12" id="portfolio">
+    <h3 class="w3-center" style="color: #000000;">Publication</h3>
+    <div class="w3-row-padding  w3-section">
+      <div class="w3-col m6 w3-center">
+        <img src="publication/grouped-shift-net/images/featured.png" style="width:68%" alt="grouped-png">
+      </div>
+      <div class="w3-col m6 w3-">
+        <div class="pub-title">No Attention is Needed: Grouped Spatial-temporal Shift for Simple and Efficient Video Restorer</div>
+        arXiv 2022
+        <div class="pub-authors">
+          <b>Dasong Li</b>, Xiaoyu Shi, Yi Zhang, Xiaogang Wang, Hongwei Qin, Hongsheng Li
         </div>
+        <br>
+        <a class="btn btn-primary btn-outline btn-sm" href="https://arxiv.org/abs/2205.04721" target="_blank"
+          rel="noopener">
+          Paper
+        </a>
+        <a class="btn btn-primary btn-outline btn-sm" href="https://dasongli1.github.io/publication/grouped-shift-net" target="_blank"
+          rel="noopener">
+          Project Page
+        </a>
       </div>
     </div>
-  </section>
-  <br>
 
-  <section>
-    <div class="container">
-      <div class="row">
-        <div class="col-12 text-center">
-            <h3>Video Demo</h3>
-            <!-- <iframe width="560" height="315" src="https://youtu.be/7uySpKoz4Ng" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/7uySpKoz4Ng" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-             <p class="text-justify">
-              We provide a video comparing results of our proposed grouped shift-Net with those of VRT on the GoPro dataset.
-            </p>
+    <div class="w3-row-padding  w3-section">
+      <div class="w3-col m6 w3-center">
+        <img src="publication/efficient_burst_denoising/featured2.png" style="width:68%" alt="denoising-png">
+      </div>
+      <div class="w3-col m6 w3-">
+        <div class="pub-title">Efficient Burst Raw Denoising with Variance Stabilization and Multi-frequency Denoising Network</div>
+        IJCV 2022
+        <div class="pub-authors">
+          <b>Dasong Li*</b>, Yi Zhang*, Ka Lung Law, Xiaogang Wang, Hongwei Qin, Hongsheng Li
         </div>
+        <br>
+        <a class="btn btn-primary btn-outline btn-sm" href="https://arxiv.org/abs/2205.04721" target="_blank"
+          rel="noopener">
+          Paper
+        </a>
       </div>
     </div>
-  </section>
-  <br>
-  <section>
-    <div class="container">
-      <div class="row">
-        <div class="col-12 text-center">
-          <h3>Method</h3>
-            <hr style="margin-top:0px">
-                <img class="img-fluid" src="images/featured.png" alt="method" width="60%">
-          <p class="text-justify" style="font-family: Lato; font-size: x-large; font-weight: 500;">Motivation</p>
-             <p class="text-justify">
-              Video restoration, by nature, requires aggregating information from the temporal dimension. Two decisive functionalities and challenges of video restoration are alignment and information aggregation across frames. The keys of various video restoration network lie in how to design different network components to realize the two functionalities. For inter-frame alignment, most previous video restoration methods resort to explicit alignment to establish temporal correspondences across frames, such as using optical flow and deformable convolution. However, using such techniques incurs more computational cost and memory consumption. They might also fail in the scenarios of large displacements, noise, and blurry regions. Several methods utilize convolutional networks to fuse multiple frames without explicit inter-frame alignment, which generally show poorer performances. Information aggregation across frames is mostly dominated by recurrent frameworks. However, the misalignments and faulty prediction can be accumulated across time and the methods are usually difficult to be parallelized for efficient inference. Recently, transformer architectures emerge as promising alternatives. Video restoration transformer (VRT) is proposed for modeling long-range dependency with attention mechanism. Nevertheless, VRT has a very large number of self-attention layers and is computationally costly.
-          </p>
-          <p class="text-justify" style="font-family: Lato; font-size: x-large; font-weight: 500;">Overall framework</p>
-             <p class="text-justify">
-              In this study, we propose a simple, fast, and effective spatial-temporal shift module to implicitly model temporal correspondences across time. We introduce Group Shift-Net, which is equipped with the proposed spatial-temporal shift module for alignment and basic 2D U-Nets as the frame-wise encoder and decoder. Such a simple yet effective framework is able to model long-term dependency without utilizing resource-demanding optical flow estimation, deformable convolution, recurrent methods, or temporal transformers. Our Group Shift-Net adopts a three-stage design: 1) frame-wise pre-restoration, 2) multi-frame fusion with grouped spatial-temporal shift, and 3) frame-wise restoration.
-          </p>
-          <hr style="margin-top:0px">
-                <img class="img-fluid" src="images/featured.png" alt="architecture" width="60%">
-          <p class="text-justify" style="font-family: Lato; font-size: x-large; font-weight: 500;">Network Architecture</p>
-             <p class="text-justify">
-              For the network of frame-wise pre-restoration of stage 1 and final restoration of stage 3, it is observed that a single U-Net-like structure cannot restore the frames well. Instead, we propose to stack N 2D slim U-Nets consecutively to conduct frame-wise restoration effectively. 
-              In multi-frame fusion, each frame-wise feature is to be fully aggregated with neighboring features to obtain the temporally aligned and fused features.  we stack multiple GSTS blocks (e.g., 6) to effectively establish temporal correspondences and conduct multi-frame fusion. A GSTS block consists of three components: 1) a temporal shift operation, 2) a spatial shift operation, and 3) a lightweight fusion layer.
-          </p>
 
-          <p class="text-justify">
-              Our contributions of this study are two-fold: 
-              <li style="text-align: left;font-family: Lato;">We propose a simple, fast, yet effective framework with a newly introduced grouped spatial-temporal shift, made for video restoration, which achieves efficient temporal feature alignment and aggregation when coupled with only basic 2D convolution blocks.</li> 
-              <li style="text-align: left;font-family: Lato;">The proposed framework achieves state-of-the-art performances with much fever FLOPs on both video deblurring and video denoising tasks, demonstrating its generalization capability.</li>
-          </p>
+
+    <div class="w3-row-padding  w3-section">
+      <div class="w3-col m6 w3-center">
+        <img src="publication/IDR/featured1.png" style="width:68%" alt="idr-png">
+      </div>
+      <div class="w3-col m6 w3-">
+        <div class="pub-title">Self-Supervised Image Denoising via Iterative Data Refinement</div>
+        CVPR 2022
+        <div class="pub-authors">
+          Yi Zhang, <b>Dasong Li</b>, Ka Lung Law, Xiaogang Wang, Hongwei Qin, Hongsheng Li 
         </div>
+        <br>
+        <a class="btn btn-primary btn-outline btn-sm" href="https://openaccess.thecvf.com/content/CVPR2022/papers/Zhang_IDR_Self-Supervised_Image_Denoising_via_Iterative_Data_Refinement_CVPR_2022_paper.pdf" target="_blank"
+          rel="noopener">
+          Paper
+        </a>
+        <a class="btn btn-primary btn-outline btn-sm" href="https://github.com/zhangyi-3/IDR" target="_blank"
+          rel="noopener">
+          Code
+        </a>
+        <a class="btn btn-primary btn-outline btn-sm" href="https://github.com/zhangyi-3/IDR" target="_blank"
+          rel="noopener">
+          Dataset
+        </a>
       </div>
     </div>
-  </section>
-
-  <section>
-    <div class="container">
-      <div class="row">
-        <div class="col-12 text-center">
-          <h3>Compared with Other Methods</h3>
-            <hr style="margin-top:0px">
-                <img class="img-fluid" src="images/comparison1.png" alt="comparison" width="80%">
-          <p>Quantitative comparison with state-of-the-art video deblurring methods on GoPro. </p>
-            <hr style="margin-top:0px">
-                <img class="img-fluid" src="images/comparison2.png" alt="comparison" width="80%">
-          <p>Quantitative comparison with state-of-the-art video denoising methods on Set8. </p>
-        </div>
-      </div>
-    </div>
-  </section>
+  </div>
 
 
 
-
-
-
-
-
-  <!-- citing -->
-  <!-- <div class="container">
-    <div class="row ">
-      <div class="col-12">
-          <h3>Citation</h3>
-          <hr style="margin-top:0px">
-              <pre style="background-color: #e9eeef;padding: 1.25em 1.5em">
-<code>@inproceedings{huang2021vs-net,
-  title={VS-Net: Voting with Segmentation for Visual Localization},
-  author={Huang, Zhaoyang and Zhou, Han and Li, Yijin and Yang, Bangbang and Xu, Yan and Zhou, Xiaowei and Bao, Hujun and Zhang, Guofeng and Li, Hongsheng},
-  booktitle={CVPR},
-  year={2021}
-}</code></pre>
-          <hr>
-      </div>
-    </div>
-  </div> -->
-
-  <footer class="text-center" style="margin-bottom:10px">
-      Thanks to <a href="https://lioryariv.github.io/" target="_blank">Lior Yariv</a> for the website template.
+  <!-- Footer -->
+  <footer class="w3-center w3-white w3-padding-16" id="contact">
+    <p> last update 21/6/2022 </p>
   </footer>
 
+  <script>
+    // Modal Image Gallery
+    function onClick(element) {
+      document.getElementById("img01").src = element.src;
+      document.getElementById("modal01").style.display = "block";
+      var captionText = document.getElementById("caption");
+      captionText.innerHTML = element.alt;
+    }
+
+    // Change style of navbar on scroll
+    window.onscroll = function () { myFunction() };
+    function myFunction() {
+      var navbar = document.getElementById("myNavbar");
+      navbar.className = navbar.className.replace(" w3-card w3-animate-top w3-white", "");
+    }
+
+    // Used to toggle the menu on small screens when clicking on the menu button
+    function toggleFunction() {
+      var x = document.getElementById("navDemo");
+      if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+      } else {
+        x.className = x.className.replace(" w3-show", "");
+      }
+    }
+  </script>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-180733097-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-180733097-1');
+  </script>
+
 </body>
+
 </html>
